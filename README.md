@@ -1,2 +1,5 @@
 # Digital-Image-Processing-Gonzalez
-python code of Gonzalez,Digital image processing.
+
+I'm reading Gonzalz's book, and here's the Python code for each chapter.
+
+I started from chapter 3 to codding .
