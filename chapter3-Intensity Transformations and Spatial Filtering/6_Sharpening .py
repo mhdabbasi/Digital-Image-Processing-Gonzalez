@@ -3,7 +3,7 @@ import cv2
 import matplotlib.pyplot as plt 
 
 #### Sharpening using Laplacian(second-derivative)
-img = cv2.imread('chapter3/images/blurry_moon.tif',0) 
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/blurry_moon.tif',0) 
 kernel = np.array([[0, 1,0],
                    [1,-4,1],
                    [0, 1,0]])

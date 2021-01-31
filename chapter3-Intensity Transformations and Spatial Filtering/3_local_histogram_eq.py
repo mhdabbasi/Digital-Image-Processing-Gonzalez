@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('chapter3/images/lhe.tif',0)
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/lhe.tif',0)
 def his_eq(ker):
     his = cv2.calcHist([ker],[0],None,[256],[0,256])
     cdf = his.cumsum()

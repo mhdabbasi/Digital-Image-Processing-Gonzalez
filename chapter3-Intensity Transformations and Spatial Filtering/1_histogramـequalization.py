@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('chapter3/images/h_e.tif',0)
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/h_e.tif',0)
 
 his = cv2.calcHist([img],[0],None,[256],[0,256])
 cdf = his.cumsum()

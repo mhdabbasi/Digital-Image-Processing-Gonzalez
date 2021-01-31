@@ -2,7 +2,7 @@ import numpy as np
 import cv2 
 import matplotlib.pyplot as plt 
 
-img = cv2.imread('chapter3/images/test_pattern_blurring.tif',0)
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/test_pattern_blurring.tif',0)
 
 def Guassian(img,ker_size,k):
     # Comput kernel

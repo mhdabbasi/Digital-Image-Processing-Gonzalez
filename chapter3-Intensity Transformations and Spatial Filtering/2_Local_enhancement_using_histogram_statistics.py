@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-img = cv2.imread('chapter3/images/lhe.tif',0)
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/lhe.tif',0)
   
 def compute_LE(img,ker_size,k0,k1,k2,k3,C) :
     '''
