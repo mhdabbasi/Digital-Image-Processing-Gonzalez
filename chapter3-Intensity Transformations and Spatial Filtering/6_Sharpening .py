@@ -16,11 +16,11 @@ plt.imshow(sharped_img,cmap='gray')
 plt.show()
 
 #### Sharpening using masking
-img = cv2.imread('chapter3/images/dipxe_text.tif',0)
+img = cv2.imread('chapter3-Intensity Transformations and Spatial Filtering/images/dipxe_text.tif',0)
 
 blurred = cv2.GaussianBlur(img,(31,31),5)
 mask = img - blurred
-sharped_img = img + 0.05*mask     # I choose k=0.05 becuse my image is smaller than image in book .
+sharped_img = img + 0.1*mask     # I choose k=0.05 becuse my image is smaller than image in book .
 
-plt.imshow(sharped_img,cmap='gray')
+plt.imshow(sharped_img,cmap='gray',vmin=0,vmax=255)
 plt.show()
