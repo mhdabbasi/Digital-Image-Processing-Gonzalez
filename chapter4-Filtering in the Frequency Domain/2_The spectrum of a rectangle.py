@@ -27,7 +27,9 @@ def DFT(img) :
 
 # so, it takes t(time to compute one value of spectrum[x,y])*M*M*N*N = 0.00018*1024**4 =54975 hour :-/
 # BUT,i can use cv2.dft that compute dft of an signal . it use fast fourier transform ,so it's very fast.
-dft = cv2.dft(np.float32(img),flags = cv2.DFT_COMPLEX_OUTPUT)
+
+dft = cv2.dft(np.float32(img),flags = cv2.DFT_COMPLEX_OUTPUT) #First channel will have the real part of the result and 
+                                                              #second channel will have the imaginary part of the result
 dft = np.fft.fftshift(dft)        # to shift dft to center.
 dft = np.sqrt(dft[:,:,0]**2+dft[:,:,1]**2)
 
