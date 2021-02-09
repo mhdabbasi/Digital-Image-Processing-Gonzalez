@@ -3,8 +3,8 @@ import cv2
 import matplotlib.pyplot as plt 
 
 img = cv2.imread('chapter4-Filtering in the Frequency Domain/images/Fig0441(a)(characters_test_pattern).tif',0)
-D0 = 20
-n = 2.5
+D0 = 50
+n = 2.25
 
 def DFT(img):
     dft = np.fft.fft2(img)
@@ -17,36 +17,42 @@ def IDFT(dft):
 
 # IDEAL LOWPASS FILTERS
 def ILBF(img,D0):
-    H = np.zeros_like(img)
+    padded_img = np.pad(img,((0,img.shape[0]),(0,img.shape[1])),mode='reflect')
+    H = np.zeros_like(padded_img)
     P,Q = H.shape[:2]
     for u in range(P):
         for v in range(Q):
             D = np.sqrt((u-P/2)**2 + (v-Q/2)**2)
             H[u,v] = int(D <= D0)
-    result = IDFT(DFT(img) * H)
+    result = IDFT(DFT(padded_img) * H)
+    result = result[:img.shape[0],:img.shape[1]]
     return result
     
 
 # GAUSSIAN LOWPASS FILTERS
 def GLBF(img,D0):
-    H = np.zeros_like(img,dtype=np.float32)
+    padded_img = np.pad(img,((0,img.shape[0]),(0,img.shape[1])),mode='reflect')
+    H = np.zeros_like(padded_img,dtype=np.float32)
     P,Q = H.shape[:2]
     for u in range(P):
         for v in range(Q):
             D = np.sqrt((u-P/2)**2 + (v-Q/2)**2)
             H[u,v] = np.exp((-D**2) / (2*(D0**2)))
-    result = IDFT(DFT(img) * H)
+    result = IDFT(DFT(padded_img) * H)
+    result = result[:img.shape[0],:img.shape[1]]
     return result
 
 # BUTTERWORTH LOWPASS FILTERS
 def BLBF(img,D0,n):
-    H = np.zeros_like(img,dtype=np.float32)
+    padded_img = np.pad(img,((0,img.shape[0]),(0,img.shape[1])),mode='reflect')
+    H = np.zeros_like(padded_img,dtype=np.float32)
     P,Q = H.shape[:2]
     for u in range(P):
         for v in range(Q):
             D = np.sqrt((u-P/2)**2 + (v-Q/2)**2)
             H[u,v] = 1 / (1+(D/D0)**(2*n))
-    result = IDFT(DFT(img) * H)
+    result = IDFT(DFT(padded_img) * H)
+    result = result[:img.shape[0],:img.shape[1]]
     return result
 
 # show results
